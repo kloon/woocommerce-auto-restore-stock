@@ -3,7 +3,7 @@
  * Plugin Name: WooCommerce Auto Restore Stock
  * Plugin URI: http://gerhardpotgieter.com/tag/woocommerce-auto-restore-stock
  * Description: Auto restore stock when orders are cancelled
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Gerhard Potgieter
  * Author URI: http://gerhardpotgieter.cim
  * License: GPL2
@@ -59,6 +59,8 @@ if ( ! class_exists( 'WC_Auto_Stock_Restore' ) ) {
 						$qty = apply_filters( 'woocommerce_order_item_quantity', $item['qty'], $this, $item );
 
 						$new_quantity = $_product->increase_stock( $qty );
+
+						do_action( 'woocommerce_auto_stock_restored', $_product, $item );
 
 						$order->add_order_note( sprintf( __( 'Item #%s stock incremented from %s to %s.', 'woocommerce' ), $item['product_id'], $old_stock, $new_quantity) );
 

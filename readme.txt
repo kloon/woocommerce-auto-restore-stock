@@ -4,7 +4,7 @@ Donate link: http://gerhardpotgieter.com/donate/
 Tags: WooCommerce, stock, inventory, restore, cancelled, refunded
 Requires at least: 3.7
 Tested up to: 3.7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,9 @@ When WooCommerce Auto Restore Stock restores the inventory/stock it will also ad
 1. Cancel or Refund a completed, processing or on-hold order to make the inventory/stock restore.
 
 == Changelog ==
+
+= 1.0.1 =
+* Added woocommerce_auto_stock_restored action
 
 = 1.0.0 =
 * First release
