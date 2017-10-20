@@ -1,0 +1,27 @@
+{
+  "name": "kloon/woocommerce-auto-stock-restore",
+  "description": "Auto restore stock when orders are cancelled or refunded.",
+  "homepage": "https://github.com/kloon/woocommerce-auto-restore-stock",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "require-dev": {
+    "wp-coding-standards/wpcs": "0.13.1",
+    "woocommerce/woocommerce-git-hooks": "1.0.2"
+  },
+  "scripts": {
+    "pre-update-cmd": [
+      "WooCommerce\\GitHooks\\Hooks::preHooks"
+    ],
+    "pre-install-cmd": [
+      "WooCommerce\\GitHooks\\Hooks::preHooks"
+    ],
+    "post-install-cmd": [
+      "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
+      "WooCommerce\\GitHooks\\Hooks::postHooks"
+    ],
+    "post-update-cmd": [
+      "\"vendor/bin/phpcs\" --config-set installed_paths vendor/wp-coding-standards/wpcs",
+      "WooCommerce\\GitHooks\\Hooks::postHooks"
+    ]
+  }
+}
