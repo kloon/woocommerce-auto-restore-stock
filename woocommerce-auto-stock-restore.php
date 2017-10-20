@@ -15,7 +15,7 @@
  */
 
 /**
- * Copyright 2017 Gerhard Potgieter  (email : potgieterg@gmail.com)
+ *    Copyright 2017 Gerhard Potgieter  (email : potgieterg@gmail.com)
  *
  *    This program is free software; you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License, version 2, as
@@ -36,3 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 include_once dirname( __FILE__ ) . '/includes/class-wc-auto-restore-stock.php';
+
+/**
+ * Main instance of WC_Auto_Stock_Restore
+ */
+function wc_auto_restore_stock() {
+	return WC_Auto_Stock_Restore::instance();
+}
