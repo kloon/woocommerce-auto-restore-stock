@@ -2,13 +2,15 @@
 /**
  * Plugin Name: WooCommerce Auto Restore Stock
  * Plugin URI: http://gerhardpotgieter.com/tag/woocommerce-auto-restore-stock
- * Description: Auto restore stock when orders are cancelled
+ * Description: Auto restore stock when orders are refunded or cancelled
  * Version: 1.1
  * Author: Gerhard Potgieter
  * Author URI: http://gerhardpotgieter.cim
  * License: GPL2+
  * Requires at least: 4.4
  * Tested up to: 4.7
+ * WC requires at least: 3.0
+ * WC tested up to: 3.2
  *
  * @package WooCommerce Auto Restore Stock
  * @author Gerhard Potgieter
