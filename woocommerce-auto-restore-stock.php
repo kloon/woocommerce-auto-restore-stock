@@ -45,3 +45,5 @@ include_once dirname( __FILE__ ) . '/includes/class-wc-auto-restore-stock.php';
 function wc_auto_restore_stock() {
 	return WC_Auto_Restore_Stock::instance();
 }
+
+add_action( 'plugins_loaded', 'wc_auto_restore_stock' );

@@ -16,6 +16,12 @@ if ( ! class_exists( 'WC_Auto_Restore_Stock' ) ) {
 	 * Main stock restore class
 	 */
 	class WC_Auto_Restore_Stock {
+		/**
+		 * Main instance variable
+		 *
+		 * @var WC_Auto_Restore_Stock|null $instance
+		 */
+		private static $instance = null;
 
 		/**
 		 * Constructor
@@ -28,6 +34,18 @@ if ( ! class_exists( 'WC_Auto_Restore_Stock' ) ) {
 			add_action( 'woocommerce_order_status_completed_to_refunded', array( $this, 'restore_order_stock' ), 10, 1 );
 			add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'restore_order_stock' ), 10, 1 );
 		} // End __construct()
+
+		/**
+		 * Return main class instance
+		 *
+		 * @return WC_Auto_Restore_Stock
+		 */
+		public static function instance() {
+			if ( is_null( $instance ) ) {
+				$instance = new self();
+			}
+			return $instance;
+		}
 
 		/**
 		 * Restore order stock
