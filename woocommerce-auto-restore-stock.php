@@ -41,5 +41,5 @@ include_once dirname( __FILE__ ) . '/includes/class-wc-auto-restore-stock.php';
  * Main instance of WC_Auto_Stock_Restore
  */
 function wc_auto_restore_stock() {
-	return WC_Auto_Stock_Restore::instance();
+	return WC_Auto_Restore_Stock::instance();
 }
