@@ -27,12 +27,12 @@ if ( ! class_exists( 'WC_Auto_Restore_Stock' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'restore_order_stock' ), 10, 1 );
-			add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'restore_order_stock' ), 10, 1 );
-			add_action( 'woocommerce_order_status_on-hold_to_cancelled', array( $this, 'restore_order_stock' ), 10, 1 );
-			add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'restore_order_stock' ), 10, 1 );
-			add_action( 'woocommerce_order_status_completed_to_refunded', array( $this, 'restore_order_stock' ), 10, 1 );
-			add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'restore_order_stock' ), 10, 1 );
+			add_action( 'woocommerce_order_status_processing_to_cancelled', array( $this, 'restore_order_stock' ), 10, 2 );
+			add_action( 'woocommerce_order_status_completed_to_cancelled', array( $this, 'restore_order_stock' ), 10, 2 );
+			add_action( 'woocommerce_order_status_on-hold_to_cancelled', array( $this, 'restore_order_stock' ), 10, 2 );
+			add_action( 'woocommerce_order_status_processing_to_refunded', array( $this, 'restore_order_stock' ), 10, 2 );
+			add_action( 'woocommerce_order_status_completed_to_refunded', array( $this, 'restore_order_stock' ), 10, 2 );
+			add_action( 'woocommerce_order_status_on-hold_to_refunded', array( $this, 'restore_order_stock' ), 10, 2 );
 		} // End __construct()
 
 		/**
@@ -41,21 +41,21 @@ if ( ! class_exists( 'WC_Auto_Restore_Stock' ) ) {
 		 * @return WC_Auto_Restore_Stock
 		 */
 		public static function instance() {
-			if ( is_null( $instance ) ) {
-				$instance = new self();
+			if ( is_null( self::$instance ) ) {
+				self::$instance = new self();
 			}
-			return $instance;
+			return self::$instance;
 		}
 
 		/**
 		 * Restore order stock
 		 * Restore stock of an order that has been refunded or cancelled.
 		 *
-		 * @param int $order_id Order ID.
+		 * @param int      $order_id Order ID.
+		 * @param WC_Order $order Order Object.
 		 */
-		public function restore_order_stock( $order_id ) {
-			if ( is_a( $order_id, 'WC_Order' ) ) {
-				$order    = $order_id;
+		public function restore_order_stock( $order_id, $order ) {
+			if ( is_a( $order, 'WC_Order' ) ) {
 				$order_id = $order->get_id();
 			} else {
 				$order = wc_get_order( $order_id );
